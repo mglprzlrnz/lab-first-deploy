@@ -8,13 +8,15 @@ const cookieParser   = require("cookie-parser");
 const bodyParser     = require("body-parser");
 const mongoose       = require("mongoose");
 const app            = express();
+require("dotenv").config();
+
 
 // Controllers
 const siteController     = require("./routes/siteController");
 const locationController = require("./routes/locationController");
 
 // Mongoose configuration
-mongoose.connect("mongodb://heroku_cwnk6bmz:fif8pl7mt8j697kotqdjjicj8n@ds155132.mlab.com:55132/heroku_cwnk6bmz");
+mongoose.connect(process.env.MONGODB_URI);
 
 // Middlewares configuration
 app.use(logger("dev"));
